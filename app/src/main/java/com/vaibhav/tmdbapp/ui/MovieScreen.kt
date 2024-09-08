@@ -62,7 +62,10 @@ fun MovieScreen(
                         ) {
                             val list = it.data.results
                             items(count = list.size) { index ->
-                                MovieItemThumbnail(list[index])
+                                MovieItemThumbnail(
+                                    list[index],
+                                    viewModel::onMovieItemThumbnailClick
+                                )
                             }
                         }
                     }

@@ -1,6 +1,7 @@
 package com.vaibhav.tmdbapp.ui.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
@@ -20,11 +21,15 @@ import com.vaibhav.tmdbapp.data.Movie
 @OptIn(ExperimentalCoilApi::class)
 @Composable
 fun MovieItemThumbnail(
-    movie: Movie
+    movie: Movie,
+    onItemThumbnailClick: (Movie) -> Unit
 ) {
     Column(
         modifier = Modifier
             .padding(top = 30.dp)
+            .clickable {
+                onItemThumbnailClick(movie)
+            }
     ) {
         val imageURL = "https://image.tmdb.org/t/p/original" + movie.posterPath
         Image(

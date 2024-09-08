@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.utils.API
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -77,6 +78,10 @@ dependencies {
 
     //coil
     implementation("io.coil-kt:coil-compose:1.3.2")
+
+    //navigation in compose
+    implementation(libs.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
 
     // viewmodel
     implementation (libs.androidx.lifecycle.viewmodel.ktx)
