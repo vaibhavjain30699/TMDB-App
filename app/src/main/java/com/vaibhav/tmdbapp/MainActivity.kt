@@ -45,7 +45,8 @@ class MainActivity : ComponentActivity() {
                                 args.imageURL,
                                 args.title,
                                 args.overview
-                            )
+                            ),
+                            navController
                         )
                     }
                 }
