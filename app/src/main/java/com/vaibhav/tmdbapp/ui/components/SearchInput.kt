@@ -3,8 +3,10 @@ package com.vaibhav.tmdbapp.ui.components
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
@@ -23,8 +25,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun SearchInput() {
-    val textFieldState by remember { mutableStateOf("") }
+fun SearchInput(
+    onSearchQueryChange: (String) -> Unit,
+) {
+    val textFieldState = remember { mutableStateOf("") }
 
     Box(
         modifier = Modifier
@@ -38,8 +42,11 @@ fun SearchInput() {
         BasicTextField(
             modifier = Modifier
                 .fillMaxWidth(),
-            value = textFieldState,
-            onValueChange = {},
+            value = textFieldState.value,
+            onValueChange = {
+                textFieldState.value = it
+                onSearchQueryChange(it)
+            },
             singleLine = true,
         ) { innerTextField ->
             Row(
@@ -51,9 +58,9 @@ fun SearchInput() {
                     contentDescription = null,
                     tint = Color(0xff9aa4b2)
                 )
-                if (textFieldState.isEmpty()) {
+                Spacer(Modifier.width(12.dp))
+                if (textFieldState.value.isEmpty()) {
                     Text(
-                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 4.dp),
                         text = "Search Movies",
                         style = TextStyle(
                             color = Color(0xff9aa4b2),

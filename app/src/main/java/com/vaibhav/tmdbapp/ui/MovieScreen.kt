@@ -36,7 +36,7 @@ fun MovieScreen(
                 end = 16.dp,
             ),
     ) {
-        SearchInput()
+        SearchInput(viewModel::onSearchQueryUpdate)
         Box(
             modifier = Modifier
                 .weight(1f)
