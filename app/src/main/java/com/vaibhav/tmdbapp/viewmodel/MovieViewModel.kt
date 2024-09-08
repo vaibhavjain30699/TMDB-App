@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 interface MovieViewModel {
     val state: MutableStateFlow<MoviesState>
     fun fetchTrendingMoviesData()
+    fun onRetry()
 }
 
 class MovieViewModelImpl(
@@ -28,5 +29,9 @@ class MovieViewModelImpl(
                 state.update { it.copy(movies = data) }
             }
         }
+    }
+
+    override fun onRetry() {
+        fetchTrendingMoviesData()
     }
 }
