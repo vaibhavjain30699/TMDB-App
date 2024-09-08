@@ -19,7 +19,7 @@ fun ErrorState(onRetry: () -> Unit) {
         Text("Some error occurred!")
         ElevatedButton(
             onClick = onRetry,
-            content = { Text("Error") }
+            content = { Text("Retry") }
         )
     }
 }
