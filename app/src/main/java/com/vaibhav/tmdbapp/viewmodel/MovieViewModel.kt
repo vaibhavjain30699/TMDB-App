@@ -54,9 +54,10 @@ class MovieViewModelImpl(
                     state.copy(
                         movies = Result.Success(
                             (state.movies as Result.Success).data.copy(results = moviesList.filter {
-                                it.title.contains(value,ignoreCase = true)
+                                it.title.contains(value, ignoreCase = true)
                             })
-                        )
+                        ),
+                        searchQuery = value,
                     )
                 }
             }

@@ -25,9 +25,10 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun SearchInput(
+    searchQuery: String,
     onSearchQueryChange: (String) -> Unit,
 ) {
-    val textFieldState = remember { mutableStateOf("") }
+    val textFieldState = remember { mutableStateOf(searchQuery) }
 
     Box(
         modifier = Modifier

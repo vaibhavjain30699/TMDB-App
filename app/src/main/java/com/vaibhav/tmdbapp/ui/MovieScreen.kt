@@ -38,7 +38,10 @@ fun MovieScreen(
                 end = 16.dp,
             ),
     ) {
-        SearchInput(viewModel::onSearchQueryUpdate)
+        SearchInput(
+            searchQuery = state.value.searchQuery,
+            onSearchQueryChange = viewModel::onSearchQueryUpdate
+        )
         Spacer(Modifier.height(24.dp))
         Box(
             modifier = Modifier
