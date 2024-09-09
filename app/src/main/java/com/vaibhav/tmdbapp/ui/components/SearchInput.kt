@@ -19,9 +19,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.vaibhav.tmdbapp.R
 
 @Composable
 fun SearchInput(
@@ -36,7 +38,7 @@ fun SearchInput(
             .border(
                 width = 1.dp,
                 color = Color(0xffe3e8ef),
-                shape = RoundedCornerShape(8.dp)
+                shape = RoundedCornerShape(dimensionResource(R.dimen.spacing_8))
             ),
     ) {
         BasicTextField(
@@ -50,7 +52,7 @@ fun SearchInput(
             singleLine = true,
         ) { innerTextField ->
             Row(
-                modifier = Modifier.padding(16.dp),
+                modifier = Modifier.padding(dimensionResource(R.dimen.spacing_16)),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Icon(
@@ -58,7 +60,7 @@ fun SearchInput(
                     contentDescription = null,
                     tint = Color(0xff9aa4b2)
                 )
-                Spacer(Modifier.width(12.dp))
+                Spacer(Modifier.width(dimensionResource(R.dimen.spacing_12)))
                 if (textFieldState.value.isEmpty()) {
                     Text(
                         text = "Search Movies",

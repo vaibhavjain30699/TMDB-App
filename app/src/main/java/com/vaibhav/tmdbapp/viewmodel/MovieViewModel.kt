@@ -8,11 +8,12 @@ import com.vaibhav.tmdbapp.data.MovieRepository
 import com.vaibhav.tmdbapp.data.Result
 import com.vaibhav.tmdbapp.navigation.MovieDetailScreen
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 interface MovieViewModel {
-    val state: MutableStateFlow<MoviesState>
+    val state: StateFlow<MoviesState>
     fun fetchTrendingMoviesData()
     fun onMovieItemThumbnailClick(movie: Movie)
     fun onSearchQueryUpdate(value: String)

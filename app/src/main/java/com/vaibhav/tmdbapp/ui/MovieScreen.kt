@@ -15,7 +15,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.dimensionResource
+import com.vaibhav.tmdbapp.R
 import com.vaibhav.tmdbapp.data.Movie
 import com.vaibhav.tmdbapp.data.Result
 import com.vaibhav.tmdbapp.ui.components.EmptyState
@@ -33,16 +34,16 @@ fun MovieScreen(
         modifier = Modifier
             .fillMaxSize()
             .padding(
-                top = 24.dp,
-                start = 16.dp,
-                end = 16.dp,
+                top = dimensionResource(R.dimen.spacing_24),
+                start = dimensionResource(R.dimen.spacing_16),
+                end = dimensionResource(R.dimen.spacing_16),
             ),
     ) {
         SearchInput(
             searchQuery = state.value.searchQuery,
             onSearchQueryChange = viewModel::onSearchQueryUpdate
         )
-        Spacer(Modifier.height(24.dp))
+        Spacer(Modifier.height(dimensionResource(R.dimen.spacing_24)))
         Box(
             modifier = Modifier
                 .weight(1f)
@@ -54,8 +55,8 @@ fun MovieScreen(
                     is Result.Loading -> {
                         CircularProgressIndicator(
                             modifier = Modifier
-                                .height(32.dp)
-                                .width(32.dp)
+                                .height(dimensionResource(R.dimen.spacing_32))
+                                .width(dimensionResource(R.dimen.spacing_32))
                         )
                     }
 
@@ -88,7 +89,7 @@ fun ItemGrid(
     LazyVerticalGrid(
         modifier = Modifier.fillMaxSize(),
         columns = GridCells.Fixed(count = 2),
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_16)),
     ) {
         items(count = list.size) { index ->
             MovieItemThumbnail(

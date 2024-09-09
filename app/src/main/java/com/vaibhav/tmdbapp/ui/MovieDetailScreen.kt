@@ -14,11 +14,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.vaibhav.tmdbapp.R
 import com.vaibhav.tmdbapp.ui.components.Thumbnail
 
 @Composable
@@ -29,14 +30,14 @@ fun MovieDetailScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 16.dp),
+            .padding(horizontal = dimensionResource(R.dimen.spacing_16)),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 24.dp),
+                .padding(vertical = dimensionResource(R.dimen.spacing_24)),
             horizontalArrangement = Arrangement.Start
         ) {
             Icon(
@@ -50,7 +51,7 @@ fun MovieDetailScreen(
         Thumbnail(data.first)
         Text(
             text = data.second,
-            modifier = Modifier.padding(vertical = 24.dp),
+            modifier = Modifier.padding(vertical = dimensionResource(R.dimen.spacing_24)),
             style = TextStyle(
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold

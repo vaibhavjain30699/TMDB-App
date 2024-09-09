@@ -7,7 +7,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.dimensionResource
+import com.vaibhav.tmdbapp.R
 import com.vaibhav.tmdbapp.data.Movie
 
 @Composable
@@ -22,8 +23,8 @@ fun MovieItemThumbnail(
             }
     ) {
         Thumbnail(movie.posterPath)
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_12)))
         Text(movie.title)
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_16)))
     }
 }
