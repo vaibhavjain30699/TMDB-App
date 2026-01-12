@@ -8,18 +8,26 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.navigation.NavController
 import com.vaibhav.tmdbapp.R
 import com.vaibhav.tmdbapp.data.Movie
+import com.vaibhav.tmdbapp.navigation.MovieDetailScreen
 
 @Composable
 fun MovieItemThumbnail(
     movie: Movie,
-    onItemThumbnailClick: (Movie) -> Unit
+    navController: NavController,
 ) {
     Column(
         modifier = Modifier
             .clickable {
-                onItemThumbnailClick(movie)
+                navController.navigate(
+                    MovieDetailScreen(
+                        movie.posterPath,
+                        movie.title,
+                        movie.overview
+                    )
+                )
             }
     ) {
         Thumbnail(movie.posterPath)

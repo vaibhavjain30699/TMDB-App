@@ -16,6 +16,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.navigation.NavController
 import com.vaibhav.tmdbapp.R
 import com.vaibhav.tmdbapp.data.Movie
 import com.vaibhav.tmdbapp.data.Result
@@ -27,7 +28,8 @@ import com.vaibhav.tmdbapp.viewmodel.MovieViewModel
 
 @Composable
 fun MovieScreen(
-    viewModel: MovieViewModel
+    viewModel: MovieViewModel,
+    navController: NavController,
 ) {
     val state = viewModel.state.collectAsState()
     Column(
@@ -67,7 +69,7 @@ fun MovieScreen(
                         } else {
                             ItemGrid(
                                 list = list,
-                                onThumbnailClick = viewModel::onMovieItemThumbnailClick,
+                                navController = navController,
                             )
                         }
                     }
@@ -84,7 +86,7 @@ fun MovieScreen(
 @Composable
 fun ItemGrid(
     list: List<Movie>,
-    onThumbnailClick: (Movie) -> Unit,
+    navController: NavController,
 ) {
     LazyVerticalGrid(
         modifier = Modifier.fillMaxSize(),
@@ -94,7 +96,7 @@ fun ItemGrid(
         items(count = list.size) { index ->
             MovieItemThumbnail(
                 list[index],
-                onThumbnailClick
+                navController,
             )
         }
     }

@@ -28,14 +28,14 @@ class MainActivity : ComponentActivity() {
             TMDBAppTheme {
                 val navController = rememberNavController()
                 val movieViewModel: MovieViewModel by viewModels {
-                    MoviesViewModelFactory(repository, navController)
+                    MoviesViewModelFactory(repository)
                 }
                 NavHost(
                     navController = navController,
                     startDestination = MovieScreen
                 ) {
                     composable<MovieScreen> {
-                        MovieScreen(movieViewModel)
+                        MovieScreen(movieViewModel, navController)
                     }
 
                     composable<MovieDetailScreen> {
